@@ -368,7 +368,7 @@ function Invoke-CachedAria2Download ($app, $version, $manifest, $architecture, $
 # download with filesize and progress indicator
 function Invoke-Download ($url, $to, $cookies, $progress) {
     $reqUrl = ($url -split '#')[0]
-    $wreq = [Net.WebRequest]::Create($reqUrl)
+    $wreq = [Net.WebRequest]::Create($env:SCOOP_URL_PROXY + $reqUrl)
     if ($wreq -is [Net.HttpWebRequest]) {
         $wreq.UserAgent = Get-UserAgent
         if (-not ($url -match 'sourceforge\.net' -or $url -match 'portableapps\.com')) {
