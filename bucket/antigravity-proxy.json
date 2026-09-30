@@ -7,10 +7,13 @@
         "url": "https://github.com/yuaotian/antigravity-proxy/blob/main/LICENSE.txt"
     },
     "notes": [
-        "Run 'antigravity-proxy enable' to deploy proxy injector to Antigravity.",
-        "Run 'antigravity-proxy disable' to remove proxy injector from Antigravity.",
-        "Run 'antigravity-proxy status' to check injection status and proxy connectivity.",
-        "Run 'antigravity-proxy config' to view or edit proxy configuration."
+        "Run 'antigravity-proxy ide apply' to deploy proxy injector & apply config to Antigravity IDE.",
+        "Run 'antigravity-proxy cli apply' to deploy proxy injector & apply config to Antigravity CLI.",
+        "Run 'antigravity-proxy ide uninstall' to remove proxy injector from Antigravity IDE.",
+        "Run 'antigravity-proxy cli uninstall' to remove proxy injector from Antigravity CLI.",
+        "Run 'antigravity-proxy ide config -ProxyPort <port>' to configure IDE proxy settings.",
+        "Run 'antigravity-proxy cli config -ProxyPort <port>' to configure CLI proxy settings.",
+        "Run 'antigravity-proxy web' to open visual configuration console in browser."
     ],
     "suggest": {
         "antigravity": "antigravity",
@@ -38,10 +41,15 @@
             ]
         }
     },
-    "post_install": [
+    "pre_install": [
         "$bucket_dir = Find-BucketDirectory -Root -Name $bucket",
         "if (Test-Path \"$bucket_dir\\scripts\\antigravity-proxy\") {",
         "    Copy-Item \"$bucket_dir\\scripts\\antigravity-proxy\\*\" \"$dir\" -Force",
+        "}",
+        "'ide', 'cli' | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\$_\\config.json\" -PathType Container) {",
+        "        Remove-Item \"$persist_dir\\$_\\config.json\" -Recurse -Force",
+        "    }",
         "}"
     ],
     "bin": [
@@ -50,7 +58,10 @@
             "antigravity-proxy"
         ]
     ],
-    "persist": "config.json",
+    "persist": [
+        "ide\\config.json",
+        "cli\\config.json"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {

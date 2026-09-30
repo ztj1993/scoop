@@ -43,52 +43,72 @@ scoop install antigravity-proxy
 
 ## 常用命令与管理工具
 
-安装后即可在终端全局使用 `antigravity-proxy` 命令行工具：
+安装后即可在终端全局使用 `antigravity-proxy` 命令行工具。除 `web` 命令外，所有操作均需指定目标模式（`cli` 或 `ide`）：
 
 ### 1. 查看当前状态
 
 ```powershell
-antigravity-proxy status
-```
-自动扫描 Scoop 安装目录及系统全局目录下的 Antigravity，展示各目标的注入状态、当前代理配置以及本地代理端口的连通性。
+# 查看 CLI 模式代理状态及配置
+antigravity-proxy cli status
 
-### 2. 一键启用代理注入
+# 查看 IDE 桌面端代理状态及配置
+antigravity-proxy ide status
+```
+自动扫描 Scoop 安装目录及系统全局目录下的对应 Antigravity 目标，展示其注入状态、当前代理配置以及本地代理端口连通性。
+
+### 2. 独立配置默认代理参数 (`config`)
+
+`config` 命令仅更新 `cli` 目录或 `ide` 目录下的默认配置文件（`config.json`），**不会直接修改目标安装目录的配置**。只有在执行 `apply` 命令时才会将配置同步部署至目标：
 
 ```powershell
-# 启用代理注入（自动检测 Antigravity 路径，使用现有配置）
-antigravity-proxy enable
+# 配置 CLI 的默认代理主机和端口
+antigravity-proxy cli config -ProxyHost 127.0.0.1 -ProxyPort 7890
 
-# 快捷指定代理端口并启用
-antigravity-proxy enable -ProxyPort 7890
+# 配置 IDE 的默认代理端口与协议
+antigravity-proxy ide config -ProxyPort 7890 -ProxyType socks5
 
-# 快捷指定代理主机地址并启用（如指向本地或局域网代理机）
-antigravity-proxy enable -ProxyHost "127.0.0.1"
+# 查看 CLI 当前默认配置
+antigravity-proxy cli config
 
-# 同时指定代理主机、端口与协议类型
-antigravity-proxy enable -ProxyHost "192.168.110.244" -ProxyPort 7890 -ProxyType socks5
-
-# 针对指定自定义路径启用
-antigravity-proxy enable -Target "D:\Tools\Antigravity"
-
-# 针对 Antigravity CLI (agy.exe) 启用
-antigravity-proxy enable -Cli
+# 查看 IDE 当前默认配置
+antigravity-proxy ide config
 ```
 
-> **注意**: 如果 Antigravity 正在运行中，启用注入后请完全退出并重启 Antigravity 以使代理生效。
+### 3. 应用代理组件与配置 (`apply`)
 
-### 3. 一键停用代理注入
+`apply` 命令执行时会自动进行**代理端口连通性检查**，并将组件 DLL 与最新配置同步部署至目标 Antigravity 目录：
 
 ```powershell
-antigravity-proxy disable
-```
-安全移除目标目录中的劫持 DLL 文件（`version.dll` / `dbghelp.dll`），恢复默认直连状态。
+# 应用 Antigravity CLI 代理组件与配置
+antigravity-proxy cli apply
 
-### 4. 打开代理配置界面
+# 应用 Antigravity IDE 桌面端代理组件与配置
+antigravity-proxy ide apply
+
+# 如安装在自定义路径，可使用 -Target 参数
+antigravity-proxy ide apply -Target "D:\Tools\Antigravity"
+```
+
+> **注意**: 如果 Antigravity 正在运行中，应用注入后请完全退出并重启 Antigravity 以使代理生效。
+
+### 4. 从目标卸载代理组件 (`uninstall`)
 
 ```powershell
-antigravity-proxy config
+# 卸载 CLI 代理组件
+antigravity-proxy cli uninstall
+
+# 卸载 IDE 代理组件
+antigravity-proxy ide uninstall
 ```
-在默认浏览器中打开可视化的配置控制台（`config-web.html`）或直接编辑 `config.json`。
+安全从目标目录中移除劫持 DLL 文件（`dbghelp.dll` / `antigravity_proxy.dll` 或 `version.dll`），恢复默认直连状态。
+
+### 5. 打开可视化配置页面 (Web 控制台)
+
+```powershell
+# 打开可视化 Web 控制台 (无需指定 cli 或 ide)
+antigravity-proxy web
+```
+在默认浏览器中打开可视化的配置控制台（`config-web.html`）或用编辑器直接查看 `config.json`。
 
 ---
 
