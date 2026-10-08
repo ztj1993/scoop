@@ -13,8 +13,10 @@
             "hash": "6c49ed35745f1921e10080779dd978e386078fa0a2b07a6e10500a815130f74d"
         }
     },
-    "pre_install": "sudo New-Service -Name XRay -Binary \"$dir\\xray.exe run -confdir $dir\\config\" -StartupType Automatic
-",
+    "pre_install": [
+        "sudo New-Service -Name XRay -Binary \"$dir\\xray.exe run -confdir $dir\\config\" -StartupType Automatic",
+        ""
+    ],
     "post_install": "Remove-Service -Name XRay",
     "bin": "xray.exe",
     "persist": "config"
