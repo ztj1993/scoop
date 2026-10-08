@@ -29,23 +29,5 @@
     "notes": [
         "Xdebug is already enabled if PHP 7.3 was installed through scoop!",
         "Otherwise add '$dir\\php_xdebug.dll' to your php.ini"
-    ],
-    "checkver": {
-        "url": "https://xdebug.org/download/historical",
-        "re": "php_xdebug-([\\d.]+-7.3)-vc15-x86_64.dll"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://xdebug.org/files/php_xdebug-$version-vc15-x86_64.dll#/php_xdebug.dll"
-            },
-            "32bit": {
-                "url": "https://xdebug.org/files/php_xdebug-$version-vc15.dll#/php_xdebug.dll"
-            }
-        },
-        "hash": {
-            "url": "https://xdebug.org/download/historical",
-            "regex": "([a-fA-F0-9]{64}).+?$basename"
-        }
-    }
+    ]
 }

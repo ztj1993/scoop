@@ -25,7 +25,7 @@
         ]
     ],
     "checkver": {
-        "github": "https://api.github.com/repos/oldj/SwitchHosts",
+        "github": "https://api.github.com/repos/oldj/SwitchHosts/releases/latest",
         "jsonpath": "$.assets[*].browser_download_url",
         "regex": "SwitchHosts-([\\d.]+)-windows-x64-setup\\.exe"
     },
