@@ -17,10 +17,14 @@
     ],
     "persist": "picpick.ini",
     "checkver": {
-        "url": "https://picpick.app/en/download/",
-        "regex": ">v([\\d.]+)"
+        "url": "https://github.com/ScoopInstaller/Extras/raw/refs/heads/master/bucket/picpick.json",
+        "jsonpath": "$.version"
     },
     "autoupdate": {
-        "url": "https://download.picpick.app/$version/picpick_portable.zip"
+        "url": "https://download.picpick.app/$version/picpick_portable.zip",
+        "hash": {
+            "url": "https://github.com/ScoopInstaller/Extras/raw/refs/heads/master/bucket/picpick.json",
+            "jsonpath": "$.hash"
+        }
     }
 }

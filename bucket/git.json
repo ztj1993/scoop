@@ -104,22 +104,25 @@
         ]
     },
     "checkver": {
-        "github": "https://api.github.com/repos/git-for-windows/git/releases/latest",
-        "jsonpath": "$.assets[?(@.name =~ /Portable/i)].browser_download_url",
-        "regex": "(?i)download/(?<tag>v?[\\d.]+windows[\\d.]+)/PortableGit-([\\d.]+)"
+        "url": "https://github.com/ScoopInstaller/Main/raw/refs/heads/master/bucket/git.json",
+        "jsonpath": "$.version"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/PortableGit-$version-64-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/PortableGit-$version-64-bit.7z.exe#/dl.7z",
+                "hash": {
+                    "url": "https://github.com/ScoopInstaller/Main/raw/refs/heads/master/bucket/git.json",
+                    "jsonpath": "$.architecture.64bit.hash"
+                }
             },
             "arm64": {
-                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/PortableGit-$version-arm64.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/PortableGit-$version-arm64.7z.exe#/dl.7z",
+                "hash": {
+                    "url": "https://github.com/ScoopInstaller/Main/raw/refs/heads/master/bucket/git.json",
+                    "jsonpath": "$.architecture.arm64.hash"
+                }
             }
-        },
-        "hash": {
-            "url": "https://github.com/git-for-windows/git/releases/tag/$matchTag",
-            "regex": "(?s)$basename.*?$sha256"
         }
     }
 }

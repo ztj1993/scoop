@@ -1,22 +1,28 @@
 {
-    "version": "34.0.5",
+    "version": "37.0.1",
     "description": "Android SDK platform-tools includes tools that interface with the Android platform, such as adb and fastboot",
     "homepage": "https://developer.android.com/studio/releases/platform-tools",
     "license": {
         "identifier": "Freeware",
         "url": "https://developer.android.com/studio/releases/platform-tools#downloads"
     },
-    "url": "https://dl.google.com/android/repository/platform-tools_r34.0.5-windows.zip",
-    "hash": "3f8320152704377de150418a3c4c9d07d16d80a6c0d0d8f7289c22c499e33571",
+    "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-win.zip",
+    "hash": "45f4d63113e895ebde0c90f194099a4676b6ac653bd28d54314a9e022bbc1a99",
     "bin": [
         "platform-tools\\adb.exe",
-        "platform-tools\\dmtracedump.exe",
         "platform-tools\\etc1tool.exe",
         "platform-tools\\fastboot.exe",
         "platform-tools\\hprof-conv.exe"
     ],
-    "checkver": "<h4.*>([\\d.]+) \\(.*\\)</h4>",
+    "checkver": {
+        "url": "https://github.com/ScoopInstaller/Main/raw/refs/heads/master/bucket/adb.json",
+        "jsonpath": "$.version"
+    },
     "autoupdate": {
-        "url": "https://dl.google.com/android/repository/platform-tools_r$version-windows.zip"
+        "url": "https://dl.google.com/android/repository/platform-tools_r$version-win.zip",
+        "hash": {
+            "url": "https://github.com/ScoopInstaller/Main/raw/refs/heads/master/bucket/adb.json",
+            "jsonpath": "$.hash"
+        }
     }
 }
