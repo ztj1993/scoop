@@ -11,16 +11,5 @@
             "url": "https://github.com/winsw/winsw/releases/download/v3.0.0-alpha.11/WinSW-x86.exe#/WinSW.exe"
         }
     },
-    "bin": "WinSW.exe",
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/winsw/winsw/releases/download/v$version/WinSW-x64.exe#/WinSW.exe"
-            },
-            "32bit": {
-                "url": "https://github.com/winsw/winsw/releases/download/v$version/WinSW-x86.exe#/WinSW.exe"
-            }
-        }
-    }
+    "bin": "WinSW.exe"
 }
