@@ -16,7 +16,6 @@ $bucketRoot = (Resolve-Path "$PSScriptRoot\..").Path
 
 $manifestPath = @(
     "$bucketRoot\bucket\$AppName.json",
-    "$bucketRoot\archive\$AppName.json",
     "$bucketRoot\deprecated\$AppName.json"
 ) | Where-Object { Test-Path $_ } | Select-Object -First 1
 

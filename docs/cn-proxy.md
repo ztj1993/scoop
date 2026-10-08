@@ -67,8 +67,7 @@
 脚本会在以下目录中查找 manifest 文件（按优先级）：
 
 1. `bucket/` - 当前版本
-2. `archive/` - 归档版本
-3. `deprecated/` - 已弃用版本
+2. `deprecated/` - 已弃用版本
 
 ---
 

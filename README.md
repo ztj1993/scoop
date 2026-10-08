@@ -59,8 +59,8 @@ irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | ie
 
 - [部署说明](docs/deployment.md) - 安装、配置和维护 Scoop 及本 bucket 的完整指南
 - [常用运行时安装](docs/runtime-installation.md) - Python、Go、Node.js 等运行时安装指南
-- [本仓库软件清单](docs/software-list.md) - 本 bucket 包含的所有软件包（含归档软件）
-- [软件使用指南](docs/guides/) - bucket 和 archive 目录下软件的常用使用方法
+- [本仓库软件清单](docs/software-list.md) - 本 bucket 包含的所有软件包
+- [软件使用指南](docs/guides/) - bucket 目录下软件的常用使用方法
 - [参考 Bucket](docs/reference-buckets.md) - 官方和社区 bucket 参考
 - [Manifest 编写提示](docs/manifest-tips.md) - Scoop manifest 编写常用变量参考
 - [加速前缀脚本](docs/cn-proxy.md) - 修改软件下载 URL 和 git 远端地址添加加速前缀

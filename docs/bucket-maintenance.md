@@ -24,7 +24,7 @@
 | `bin/checkver.ps1` | 检查上游最新版本；支持自动下载新版本、更新 Hash 及写入 Manifest | Scoop 核心 `checkver.ps1` |
 | `bin/missing-checkver.ps1` | 扫描并列出当前 `bucket/` 下缺少 `checkver` 自动更新配置的软件 | Scoop 核心 `missing-checkver.ps1` |
 | `bin/formatjson.ps1` | 统一格式化 Manifest JSON 文件（规范缩进、字段顺序） | Scoop 核心 `formatjson.ps1` |
-| `bin/update-gitignore.ps1` | 同步 `archive/` 与 `deprecated/` 下的软件至根目录 `.gitignore` | 本地独立脚本 |
+| `bin/update-gitignore.ps1` | 同步 `deprecated/` 下的软件至根目录 `.gitignore` | 本地独立脚本 |
 | `bin/cn-proxy-url.ps1` | 修改软件包 Manifest 中的下载 URL，添加/移除国内加速前缀 | 本地独立脚本 |
 | `bin/cn-proxy-git.ps1` | 修改 bucket 与 scoop 的 Git 远端地址，添加/移除国内加速前缀 | 本地独立脚本 |
 
@@ -133,14 +133,13 @@ Scoop 官方对 Manifest JSON 文件的缩进、字段次序（如 `version`、`
 
 ---
 
-## update-gitignore.ps1 - 归档与废弃规则维护
+## update-gitignore.ps1 - 废弃软件规则维护
 
-本仓库采用版本归档策略：
-- `bucket/`：存放当前主力维护的最新软件版本。
-- `archive/`：存放历史旧版本或特殊需求锁定的版本。
+本仓库采用版本管理策略：
+- `bucket/`：存放当前维护的软件版本。
 - `deprecated/`：存放已废弃或停止维护的软件。
 
-为防止在切换、测试或多版本并存时不慎将归档/废弃版本直接提交覆盖到 `bucket/`，本脚本会自动收集并在根目录 `.gitignore` 中生成忽略规则。
+为防止在切换或测试时不慎将废弃版本直接提交覆盖到 `bucket/`，本脚本会自动收集并在根目录 `.gitignore` 中生成忽略规则。
 
 ### 基本用法
 
@@ -150,7 +149,7 @@ Scoop 官方对 Manifest JSON 文件的缩进、字段次序（如 `version`、`
 
 ### 执行逻辑
 
-1. 读取 `archive/` 与 `deprecated/` 目录下的所有 `.json` 文件。
+1. 读取 `deprecated/` 目录下的所有 `.json` 文件。
 2. 生成对应的 `/bucket/<filename>.json` 忽略模式。
 3. 读取现有的 `.gitignore`，自动增量添加新增条目、清理无效条目，并保留非 `/bucket/` 的原有规则。
 4. 在控制台输出详细的变更统计（总条目数、新增数、移除数）。
@@ -192,8 +191,8 @@ graph TD
    # 卸载旧版（若已安装）并测试安装修改后的本地 Manifest
    scoop install .\bucket\<软件名>.json
    ```
-5. **归档处理（如适用）**：
-   如果将旧版移入了 `archive/` 目录，执行规则同步：
+5. **规则同步（如适用）**：
+   如果向 `deprecated/` 目录新增了废弃版本，执行规则同步：
    ```powershell
    .\bin\update-gitignore.ps1
    ```

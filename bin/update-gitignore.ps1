@@ -1,4 +1,4 @@
-# 更新 .gitignore 文件，将 archive 和 deprecated 目录下的文件添加到忽略列表
+# 更新 .gitignore 文件，将 deprecated 目录下的文件添加到忽略列表
 # 格式: /bucket/<filename>.json
 
 $ErrorActionPreference = 'Stop'
@@ -6,16 +6,11 @@ $ErrorActionPreference = 'Stop'
 $repoRoot = Resolve-Path "$PSScriptRoot/.."
 $gitignorePath = Join-Path $repoRoot '.gitignore'
 
-# 获取 archive 和 deprecated 目录下的所有 .json 文件
-$archiveFiles = Get-ChildItem -Path "$repoRoot/archive" -Filter '*.json' -ErrorAction SilentlyContinue
+# 获取 deprecated 目录下的所有 .json 文件
 $deprecatedFiles = Get-ChildItem -Path "$repoRoot/deprecated" -Filter '*.json' -ErrorAction SilentlyContinue
 
 # 构建需要忽略的文件列表（格式: /bucket/<filename>.json）
 $filesToIgnore = @()
-
-foreach ($file in $archiveFiles) {
-    $filesToIgnore += "/bucket/$($file.Name)"
-}
 
 foreach ($file in $deprecatedFiles) {
     $filesToIgnore += "/bucket/$($file.Name)"
