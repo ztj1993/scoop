@@ -25,7 +25,5 @@
         "$conf_dir = \"$bucket_dir\\scripts\\v2ray\"",
         "if (!(Test-Path \"$dir\\winsw.xml\")) { Copy-Item \"$conf_dir\\winsw.xml\" \"$dir\\winsw.xml\" }"
     ],
-    "post_install": [
-        "winsw install \"$dir\\winsw.xml\""
-    ]
+    "post_install": "winsw install \"$dir\\winsw.xml\""
 }

@@ -1,11 +1,11 @@
 {
-  "version": "latest",
-  "homepage": "https://github.com/aliyun/aliyun-cli",
-  "url": "https://aliyuncli.alicdn.com/aliyun-cli-windows-latest-amd64.zip",
-  "bin": [
-    [
-      "aliyun.exe",
-      "aliyun-cli"
+    "version": "latest",
+    "homepage": "https://github.com/aliyun/aliyun-cli",
+    "url": "https://aliyuncli.alicdn.com/aliyun-cli-windows-latest-amd64.zip",
+    "bin": [
+        [
+            "aliyun.exe",
+            "aliyun-cli"
+        ]
     ]
-  ]
 }

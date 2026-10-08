@@ -1,12 +1,12 @@
 {
-  "version": "3.96",
-  "homepage": "https://www.dcloud.io/hbuilderx.html",
-  "url": "https://qiniu-ecdn.dcloud.net.cn/download/HBuilderX.3.96.2023110403.zip",
-  "extract_dir": "HBuilderX",
-  "shortcuts": [
-    [
-      "HBuilderX.exe",
-      "HBuilderX"
+    "version": "3.96",
+    "homepage": "https://www.dcloud.io/hbuilderx.html",
+    "url": "https://qiniu-ecdn.dcloud.net.cn/download/HBuilderX.3.96.2023110403.zip",
+    "extract_dir": "HBuilderX",
+    "shortcuts": [
+        [
+            "HBuilderX.exe",
+            "HBuilderX"
+        ]
     ]
-  ]
 }

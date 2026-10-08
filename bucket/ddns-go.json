@@ -1,19 +1,17 @@
 {
-  "version": "6.6.3",
-  "description": "A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.",
-  "homepage": "https://github.com/fatedier/frp",
-  "license": "Apache-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/jeessy2/ddns-go/releases/download/v6.6.3/ddns-go_6.6.3_windows_x86_64.zip"
+    "version": "6.6.3",
+    "description": "A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.",
+    "homepage": "https://github.com/fatedier/frp",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jeessy2/ddns-go/releases/download/v6.6.3/ddns-go_6.6.3_windows_x86_64.zip"
+        },
+        "32bit": {
+            "url": "https://github.com/jeessy2/ddns-go/releases/download/v6.6.3/ddns-go_6.6.3_windows_i386.zip"
+        }
     },
-    "32bit": {
-      "url": "https://github.com/jeessy2/ddns-go/releases/download/v6.6.3/ddns-go_6.6.3_windows_i386.zip"
-    }
-  },
-  "bin": [
-    "ddns-go.exe"
-  ],
-  "post_install": "sudo \"$dir\\ddns-go.exe\" -s install",
-  "pre_uninstall": "sudo \"$dir\\ddns-go.exe\" -s uninstall"
+    "bin": "ddns-go.exe",
+    "post_install": "sudo \"$dir\\ddns-go.exe\" -s install",
+    "pre_uninstall": "sudo \"$dir\\ddns-go.exe\" -s uninstall"
 }

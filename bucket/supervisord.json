@@ -1,26 +1,24 @@
 {
-  "version": "0.7.3",
-  "homepage": "https://github.com/ochinchina/supervisord",
-  "url": [
-    "https://github.com/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Windows_64-bit.zip",
-    "https://github.com/winsw/winsw/releases/download/v2.12.0/WinSW-x64.exe#/winsw.exe"
-  ],
-  "extract_dir": "supervisord_0.7.3_Windows_64-bit",
-  "pre_install": [
-    "$bucket_dir = Find-BucketDirectory -Root -Name $bucket",
-    "$conf_dir = \"$bucket_dir\\scripts\\supervisord\"",
-    "if (!(Test-Path \"$persist_dir\\supervisord.conf\")) { Copy-Item \"$conf_dir\\supervisord.conf\" \"$persist_dir\\supervisord.conf\" }",
-    "if (!(Test-Path \"$dir\\winsw.xml\")) { Copy-Item \"$conf_dir\\winsw.xml\" \"$dir\\winsw.xml\" }"
-  ],
-  "post_install": "sudo \"$dir\\winsw.exe\" install",
-  "pre_uninstall": "sudo \"$dir\\winsw.exe\" uninstall",
-  "persist": [
-    "supervisord.conf"
-  ],
-  "bin": [
-    [
-      "supervisord.exe",
-      "supervisord"
+    "version": "0.7.3",
+    "homepage": "https://github.com/ochinchina/supervisord",
+    "url": [
+        "https://github.com/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Windows_64-bit.zip",
+        "https://github.com/winsw/winsw/releases/download/v2.12.0/WinSW-x64.exe#/winsw.exe"
+    ],
+    "extract_dir": "supervisord_0.7.3_Windows_64-bit",
+    "pre_install": [
+        "$bucket_dir = Find-BucketDirectory -Root -Name $bucket",
+        "$conf_dir = \"$bucket_dir\\scripts\\supervisord\"",
+        "if (!(Test-Path \"$persist_dir\\supervisord.conf\")) { Copy-Item \"$conf_dir\\supervisord.conf\" \"$persist_dir\\supervisord.conf\" }",
+        "if (!(Test-Path \"$dir\\winsw.xml\")) { Copy-Item \"$conf_dir\\winsw.xml\" \"$dir\\winsw.xml\" }"
+    ],
+    "post_install": "sudo \"$dir\\winsw.exe\" install",
+    "pre_uninstall": "sudo \"$dir\\winsw.exe\" uninstall",
+    "persist": "supervisord.conf",
+    "bin": [
+        [
+            "supervisord.exe",
+            "supervisord"
+        ]
     ]
-  ]
 }
