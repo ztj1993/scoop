@@ -1,5 +1,5 @@
 {
-    "version": "20260924.1",
+    "version": "20261001.1",
     "description": "High-performance PAC (Proxy Auto-Config) file based on Radix Tree CNIP matching, with automated Windows PAC proxy configuration.",
     "homepage": "https://github.com/zhiyi7/gfw-pac",
     "license": {
@@ -15,9 +15,9 @@
     "suggest": {
         "python": "python"
     },
-    "url": "https://github.com/zhiyi7/gfw-pac/archive/refs/tags/v20260924.1.zip",
-    "hash": "5726cdd11ccf855fcb56532d77c5065d460c0f6ef61f609804888e8e0911eaf3",
-    "extract_dir": "gfw-pac-20260924.1",
+    "url": "https://github.com/zhiyi7/gfw-pac/archive/refs/tags/v20261001.1.zip",
+    "hash": "f62ae54bc2e035e777efba66227d2f4a11c0b4a5cd34ac42e112134ab66b61d6",
+    "extract_dir": "gfw-pac-20261001.1",
     "post_install": [
         "$bucket_dir = Find-BucketDirectory -Root -Name $bucket",
         "if (Test-Path \"$bucket_dir\\scripts\\gfw-pac\") {",
