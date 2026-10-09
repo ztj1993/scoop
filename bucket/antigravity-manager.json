@@ -10,6 +10,21 @@
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Force -Recurse -ErrorAction Ignore",
+    "post_install": [
+        "$config_dir = \"$env:USERPROFILE\\.antigravity_tools\"",
+        "$config_file = \"$config_dir\\update_settings.json\"",
+        "if (!(Test-Path $config_dir)) {",
+        "    New-Item $config_dir -ItemType Directory -Force | Out-Null",
+        "}",
+        "if (Test-Path $config_file) {",
+        "    $settings = (Get-Content $config_file -Raw | ConvertFrom-Json)",
+        "    $settings.auto_check = $false",
+        "    Set-Content $config_file ($settings | ConvertToPrettyJson) -Encoding ASCII -Force",
+        "} else {",
+        "    $settings = @{ 'auto_check' = $false }",
+        "    Set-Content $config_file ($settings | ConvertToPrettyJson) -Encoding ASCII -Force",
+        "}"
+    ],
     "bin": [
         "antigravity-tools.exe",
         [
