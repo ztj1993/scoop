@@ -93,16 +93,42 @@ function Get-AntigravityLocations {
     }
 
     if ($Type -eq "cli") {
-        $cliExe = Get-Command "agy.exe" -ErrorAction SilentlyContinue
-        if ($cliExe) {
-            $paths.Add((Split-Path $cliExe.Source -Parent))
+        foreach ($cmdName in @("agy.exe", "antigravity-cli.exe", "agy", "antigravity-cli")) {
+            $cliExe = Get-Command $cmdName -ErrorAction SilentlyContinue
+            if ($cliExe -and $cliExe.Source) {
+                $exePath = $cliExe.Source
+                $shimFile = [System.IO.Path]::ChangeExtension($exePath, ".shim")
+                if (Test-Path $shimFile) {
+                    $shimContent = Get-Content $shimFile -Raw -ErrorAction SilentlyContinue
+                    if ($shimContent -match 'path\s*=\s*(.+)') {
+                        $targetExe = ($matches[1].Trim() -replace '^["'']+') -replace '["'']+$'
+                        if (Test-Path $targetExe) {
+                            $targetDir = (Resolve-Path (Split-Path $targetExe -Parent)).Path
+                            if (-not $paths.Contains($targetDir)) {
+                                $paths.Add($targetDir)
+                            }
+                            continue
+                        }
+                    }
+                }
+                $parentDir = (Resolve-Path (Split-Path $exePath -Parent)).Path
+                if ($parentDir -notmatch '(?i)[\\/]shims$') {
+                    if (-not $paths.Contains($parentDir)) {
+                        $paths.Add($parentDir)
+                    }
+                }
+            }
         }
-        $candidates = @(
-            "$env:USERPROFILE\scoop\apps\antigravity\current",
-            "$env:USERPROFILE\scoop\apps\antigravity-ide\current",
-            "$env:LOCALAPPDATA\Programs\Antigravity",
-            "$env:LOCALAPPDATA\Programs\Antigravity IDE"
-        )
+
+        $candidates = [System.Collections.Generic.List[string]]::new()
+        $candidates.Add("$env:LOCALAPPDATA\agy\bin")
+        $candidates.Add("$env:USERPROFILE\scoop\apps\antigravity-cli\current")
+        if ($env:SCOOP) { $candidates.Add("$env:SCOOP\apps\antigravity-cli\current") }
+        if ($env:SCOOP_GLOBAL) { $candidates.Add("$env:SCOOP_GLOBAL\apps\antigravity-cli\current") }
+        if ($env:ProgramData) { $candidates.Add("$env:ProgramData\scoop\apps\antigravity-cli\current") }
+        $candidates.Add("$env:LOCALAPPDATA\Programs\Antigravity CLI")
+        $candidates.Add("${env:ProgramFiles}\Antigravity CLI")
+        $candidates.Add("${env:ProgramFiles(x86)}\Antigravity CLI")
     } else {
         $candidates = @(
             "$env:USERPROFILE\scoop\apps\antigravity\current",
