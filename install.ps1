@@ -38,7 +38,7 @@ function Install-ScoopMainBucket {
     $repo = if ($env:SCOOP_MAIN_BUCKET_REPO) {
         $env:SCOOP_MAIN_BUCKET_REPO
     } else {
-        "https://github.com/ztj1993/scoop-lock/archive/master.zip"
+        "https://github.com/ztj1993/scoop/archive/master.zip"
     }
     $bucketDir = if ($env:SCOOP_MAIN_BUCKET_DIR) {
         $env:SCOOP_MAIN_BUCKET_DIR
@@ -52,11 +52,11 @@ function Install-ScoopMainBucket {
     }
 
     New-Item -ItemType Directory -Path "$bucketDir" -Force
-    $zipfile = "$bucketDir\scoop-lock.zip"
+    $zipfile = "$bucketDir\scoop.zip"
     Invoke-WebRequest -Uri $repo -OutFile $zipfile
     $tempDir = "$bucketDir\_tmp"
     Expand-Archive -Path $zipfile -DestinationPath $tempDir
-    Copy-Item "$tempDir\scoop-lock-*\*" $bucketDir -Recurse -Force
+    Copy-Item "$tempDir\scoop-*\*" $bucketDir -Recurse -Force
     Remove-Item $tempDir -Recurse -Force
     Remove-Item $zipfile
 }

@@ -10,7 +10,7 @@
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 脚本会自动完成以下操作：
@@ -24,16 +24,16 @@ irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | ie
 ```powershell
 # 强制重新安装 Scoop
 $env:FORCE_SCOOP = 1
-irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 
 # 强制重新安装本 bucket
 $env:FORCE_MAIN_BUCKET = 1
-irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 
 # 同时强制重新安装两者
 $env:FORCE_SCOOP = 1
 $env:FORCE_MAIN_BUCKET = 1
-irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 ## 环境变量配置
@@ -52,7 +52,7 @@ irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | ie
 
 | 变量 | 说明 | 默认值 |
 | :--- | :--- | :--- |
-| `SCOOP_MAIN_BUCKET_REPO` | 本 bucket 下载地址 | `https://github.com/ztj1993/scoop-lock/archive/master.zip` |
+| `SCOOP_MAIN_BUCKET_REPO` | 本 bucket 下载地址 | `https://github.com/ztj1993/scoop/archive/master.zip` |
 | `SCOOP_MAIN_BUCKET_DIR` | 本 bucket 安装目录 | `%USERPROFILE%\scoop\buckets\main` |
 | `FORCE_MAIN_BUCKET` | 强制重新安装本 bucket | 空值表示不强制 |
 
@@ -64,8 +64,8 @@ irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | ie
 
 ```powershell
 $env:SCOOP_PACKAGE_REPO = "https://ghfast.top/https://github.com/ScoopInstaller/Scoop/archive/master.zip"
-$env:SCOOP_MAIN_BUCKET_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop-lock/archive/master.zip"
-irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+$env:SCOOP_MAIN_BUCKET_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop/archive/master.zip"
+irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 ### 自定义安装目录
@@ -73,7 +73,7 @@ irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop-lock/mast
 ```powershell
 $env:SCOOP_APP_DIR = "D:\scoop\apps\scoop\current"
 $env:SCOOP_MAIN_BUCKET_DIR = "D:\scoop\buckets\main"
-irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 ## 安装后配置
@@ -95,7 +95,7 @@ scoop config globalPath "D:\scoop\global"
 
 ```powershell
 # 添加本 bucket（安装脚本会自动完成）
-scoop bucket add main https://github.com/ztj1993/scoop-lock.git
+scoop bucket add main https://github.com/ztj1993/scoop.git
 
 # 添加其他常用 bucket
 scoop bucket add extras

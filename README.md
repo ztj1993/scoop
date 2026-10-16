@@ -1,4 +1,4 @@
-# scoop-lock
+# scoop
 
 个人使用的 Scoop bucket，用于锁定常用软件版本，并对国内网络环境下的安装体验做了一些默认优化。
 
@@ -7,7 +7,7 @@
 ### 添加 Bucket
 
 ```powershell
-scoop bucket add main https://github.com/ztj1993/scoop-lock.git
+scoop bucket add main https://github.com/ztj1993/scoop.git
 ```
 
 ### 安装软件
@@ -36,15 +36,15 @@ scoop config last_update "2099-01-01 00:00:00"
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 如国内网络访问 GitHub 不稳定，可通过加速代理（如 `ghfast.top`）安装：
 
 ```powershell
 $env:SCOOP_PACKAGE_REPO = "https://ghfast.top/https://github.com/ScoopInstaller/Scoop/archive/master.zip"
-$env:SCOOP_MAIN_BUCKET_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop-lock/archive/master.zip"
-irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+$env:SCOOP_MAIN_BUCKET_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop/archive/master.zip"
+irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 如需强制重新安装 Scoop 或重新覆盖本 bucket：
@@ -52,7 +52,7 @@ irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop-lock/mast
 ```powershell
 $env:FORCE_SCOOP = 1
 $env:FORCE_MAIN_BUCKET = 1
-irm https://raw.githubusercontent.com/ztj1993/scoop-lock/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 ## 文档导航
