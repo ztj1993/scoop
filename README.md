@@ -71,6 +71,7 @@ irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ## 文档导航
 
 - [部署说明](docs/deployment.md) - 安装、配置和维护 Scoop 及本 bucket 的完整指南
+- [Scoop 使用指南](docs/scoop-guide.md) - Scoop 常用命令与配置说明
 - [常用运行时安装](docs/runtime-installation.md) - Python、Go、Node.js 等运行时安装指南
 - [本仓库软件清单](docs/software-list.md) - 本 bucket 包含的所有软件包
 - [软件使用指南](docs/guides/) - bucket 目录下软件的常用使用方法
