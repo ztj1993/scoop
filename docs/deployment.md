@@ -47,6 +47,22 @@ $env:SCOOP_MAIN_BUCKET_GIT_REPO = "https://ghfast.top/https://github.com/ztj1993
 irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
+### 在网络代理环境下安装
+
+如处于网络代理环境下，可在安装前于当前 PowerShell 会话中配置代理（这些命令会影响当前会话中使用 `net.webclient` 的网络请求）：
+
+```powershell
+# 如需使用未在系统“Internet 选项”中配置的代理服务器
+[net.webrequest]::defaultwebproxy = new-object net.webproxy "http://proxy.example.org:8080"
+
+# 如需使用指定的用户名和密码认证（替换 'username' 和 'password'）
+[net.webrequest]::defaultwebproxy.credentials = new-object net.networkcredential 'username', 'password'
+
+# 配置完成后执行安装
+irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
+# 或官方安装命令：iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+```
+
 ### 自定义安装目录
 
 ```powershell
