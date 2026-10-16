@@ -32,7 +32,7 @@ scoop config last_update "2099-01-01 00:00:00"
 
 ## 初始化 Scoop
 
-如果当前机器还没有安装 Scoop，可以直接运行仓库提供的安装脚本。脚本会安装 Scoop，并把本仓库作为 `main` bucket 放到默认目录。
+如果当前机器还没有安装 Scoop，可以直接运行仓库提供的安装脚本。脚本基于官方安装器，会自动安装 Scoop 并将本仓库作为 `main` bucket 克隆到默认目录：
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -42,16 +42,16 @@ irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 如国内网络访问 GitHub 不稳定，可通过加速代理（如 `ghfast.top`）安装：
 
 ```powershell
-$env:SCOOP_PACKAGE_REPO = "https://ghfast.top/https://github.com/ScoopInstaller/Scoop/archive/master.zip"
-$env:SCOOP_MAIN_BUCKET_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop/archive/master.zip"
+$env:SCOOP_INSTALLER_URL = "https://ghfast.top/https://raw.githubusercontent.com/ScoopInstaller/Install/master/src/install.ps1"
+$env:SCOOP_PACKAGE_GIT_REPO = "https://ghfast.top/https://github.com/ScoopInstaller/Scoop.git"
+$env:SCOOP_MAIN_BUCKET_GIT_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop.git"
 irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
-如需强制重新安装 Scoop 或重新覆盖本 bucket：
+如需自定义 Scoop 安装目录（默认 `%USERPROFILE%\scoop`）：
 
 ```powershell
-$env:FORCE_SCOOP = 1
-$env:FORCE_MAIN_BUCKET = 1
+$env:SCOOP = "D:\scoop"
 irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
@@ -65,4 +65,3 @@ irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 - [Manifest 编写提示](docs/manifest-tips.md) - Scoop manifest 编写常用变量参考
 - [加速前缀脚本](docs/cn-proxy.md) - 修改软件下载 URL 和 git 远端地址添加加速前缀
 - [仓库维护与更新指南](docs/bucket-maintenance.md) - checkver 版本检测与更新、JSON 格式化等维护脚本使用说明
-

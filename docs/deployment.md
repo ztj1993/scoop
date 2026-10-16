@@ -17,44 +17,22 @@ irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 1. 下载并安装 Scoop
 2. 下载并配置本 bucket 为 `main` bucket
 
-### 强制重新安装
-
-如需强制重新安装 Scoop 或重新覆盖本 bucket：
-
-```powershell
-# 强制重新安装 Scoop
-$env:FORCE_SCOOP = 1
-irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
-
-# 强制重新安装本 bucket
-$env:FORCE_MAIN_BUCKET = 1
-irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
-
-# 同时强制重新安装两者
-$env:FORCE_SCOOP = 1
-$env:FORCE_MAIN_BUCKET = 1
-irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
-```
-
 ## 环境变量配置
 
 安装脚本支持通过环境变量自定义安装行为。
 
-### Scoop 相关变量
+### 安装源相关变量
 
-| 变量 | 说明 | 默认值 |
-| :--- | :--- | :--- |
-| `SCOOP_PACKAGE_REPO` | Scoop 安装包下载地址 | `https://github.com/ScoopInstaller/Scoop/archive/master.zip` |
-| `SCOOP_APP_DIR` | Scoop 安装目录 | `%USERPROFILE%\scoop\apps\scoop\current` |
-| `FORCE_SCOOP` | 强制重新安装 Scoop | 空值表示不强制 |
+- `SCOOP_INSTALLER_URL`：官方安装器脚本下载地址（默认 `https://get.scoop.sh`）
+- `SCOOP_MAIN_BUCKET_GIT_REPO`：本 bucket Git 仓库克隆地址（默认 `https://github.com/ztj1993/scoop.git`）
+- `SCOOP_MAIN_BUCKET_REPO`：本 bucket Zip 归档包下载地址，无 Git 环境时降级使用（默认 `https://github.com/ztj1993/scoop/archive/master.zip`）
+- `SCOOP_PACKAGE_GIT_REPO`：Scoop 核心 Git 仓库克隆地址（默认 `https://github.com/ScoopInstaller/Scoop.git`）
+- `SCOOP_PACKAGE_REPO`：Scoop 核心 Zip 归档包下载地址，无 Git 环境时降级使用（默认 `https://github.com/ScoopInstaller/Scoop/archive/master.zip`）
 
-### Bucket 相关变量
+### 目录与系统变量
 
-| 变量 | 说明 | 默认值 |
-| :--- | :--- | :--- |
-| `SCOOP_MAIN_BUCKET_REPO` | 本 bucket 下载地址 | `https://github.com/ztj1993/scoop/archive/master.zip` |
-| `SCOOP_MAIN_BUCKET_DIR` | 本 bucket 安装目录 | `%USERPROFILE%\scoop\buckets\main` |
-| `FORCE_MAIN_BUCKET` | 强制重新安装本 bucket | 空值表示不强制 |
+- `SCOOP`：Scoop 安装根目录（默认 `%USERPROFILE%\scoop`）
+- `SCOOP_GLOBAL`：全局应用安装目录（默认 `%ProgramData%\scoop`）
 
 ## 自定义安装示例
 
@@ -63,16 +41,17 @@ irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 默认直接从 GitHub 官方下载。如国内网络环境访问较慢或不稳定，可使用代理加速地址（如 `ghfast.top`）：
 
 ```powershell
-$env:SCOOP_PACKAGE_REPO = "https://ghfast.top/https://github.com/ScoopInstaller/Scoop/archive/master.zip"
-$env:SCOOP_MAIN_BUCKET_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop/archive/master.zip"
+$env:SCOOP_INSTALLER_URL = "https://ghfast.top/https://raw.githubusercontent.com/ScoopInstaller/Install/master/src/install.ps1"
+$env:SCOOP_PACKAGE_GIT_REPO = "https://ghfast.top/https://github.com/ScoopInstaller/Scoop.git"
+$env:SCOOP_MAIN_BUCKET_GIT_REPO = "https://ghfast.top/https://github.com/ztj1993/scoop.git"
 irm https://ghfast.top/https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
 ### 自定义安装目录
 
 ```powershell
-$env:SCOOP_APP_DIR = "D:\scoop\apps\scoop\current"
-$env:SCOOP_MAIN_BUCKET_DIR = "D:\scoop\buckets\main"
+$env:SCOOP = "D:\scoop"
+$env:SCOOP_GLOBAL = "D:\scoop\global"
 irm https://raw.githubusercontent.com/ztj1993/scoop/master/install.ps1 | iex
 ```
 
