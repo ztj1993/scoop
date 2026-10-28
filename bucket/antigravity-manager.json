@@ -1,12 +1,12 @@
 {
-    "version": "4.9.6",
+    "version": "5.0.0",
     "description": "Professional Antigravity Account Manager & Switcher. One-click seamless account switching for Antigravity Tools.",
     "homepage": "https://github.com/lbjlaq/Antigravity-Manager",
     "license": "CC-BY-NC-SA-4.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/lbjlaq/Antigravity-Manager/releases/download/v4.9.6/Antigravity.Tools_4.9.6_x64-setup.exe#/dl.7z",
-            "hash": "03725cd33b910c559232b30e7fd64a9a2391c17346576232966205b470e96eaa"
+            "url": "https://github.com/lbjlaq/Antigravity-Manager/releases/download/v5.0.0/Antigravity.Tools_5.0.0_x64-setup.exe#/dl.7z",
+            "hash": "ab7f8e019fdb3c4d1337a25201a236c9520681beb8be8dff0a2c8bcb2fb3a5a3"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Force -Recurse -ErrorAction Ignore",
