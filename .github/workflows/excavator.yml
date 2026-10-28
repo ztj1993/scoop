@@ -1,0 +1,45 @@
+name: Excavator
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  excavate:
+    name: Excavate
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Checkver and Autoupdate
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          git clone -q --depth=1 https://github.com/ScoopInstaller/Scoop.git $env:TEMP/scoop
+          $checkver = "$env:TEMP/scoop/bin/checkver.ps1"
+          $formatjson = "$env:TEMP/scoop/bin/formatjson.ps1"
+
+          # 批量检查更新并规范化格式
+          & $checkver -dir ./bucket -u *
+          & $formatjson -dir ./bucket
+
+      - name: Commit and push changes
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if (git status --porcelain bucket) {
+              git add bucket/
+              $apps = (git diff --name-only --cached bucket) | ForEach-Object { [System.IO.Path]::GetFileNameWithoutExtension($_) }
+              $appList = $apps -join ', '
+              git commit -m "build: 更新多个软件包版本至最新版本" -m "更新软件: $appList"
+              git push
+          } else {
+              Write-Host "No manifest updates detected."
+          }
