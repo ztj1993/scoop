@@ -1,5 +1,5 @@
 {
-    "version": "2.4",
+    "version": "2.6",
     "description": "Transparent proxy injector for Antigravity, forcing SOCKS5/HTTP proxy without TUN mode on Windows.",
     "homepage": "https://github.com/yuaotian/antigravity-proxy",
     "license": {
@@ -22,22 +22,22 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.4/antigravity-proxy-v2.4-ide-win-x64.zip",
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.4/antigravity-proxy-v2.4-cli-win-x64.zip"
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6/antigravity-proxy-v2.6-ide-win-x64.zip",
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6/antigravity-proxy-v2.6-cli-win-x64.zip"
             ],
             "hash": [
-                "ee4aead95b677148c6ac4d8e46018b3b07e2b1e4249bb5232985628ee78d82e3",
-                "8647ab219c71f45c3199ac54e3a989921bece77df814a4885ab7a24dff001ce1"
+                "d2244cd1ee78e253392a5adba19846145f15f14883c6a650387b3b9cbdeb5f88",
+                "b760a8064fe67e622301ee78e1daee853a91baf8482f647ae2d8df0c60166e37"
             ]
         },
         "32bit": {
             "url": [
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.4/antigravity-proxy-v2.4-ide-win-x86.zip",
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.4/antigravity-proxy-v2.4-cli-win-x86.zip"
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6/antigravity-proxy-v2.6-ide-win-x86.zip",
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6/antigravity-proxy-v2.6-cli-win-x86.zip"
             ],
             "hash": [
-                "ca40f0be389552c9ab7ae49127cfded3dd96732ba1f2af884bb174f4f77d9a05",
-                "5ff00d1c8278da2c4bd070a318b35303994b21ad21e2fc364cb338b27d363934"
+                "52eea297fae93d73f884dde6b3fe0f46c9d9891a37de0157b1a98e1b7f92877c",
+                "be941f6a303a532ad216b25e120dc609aa0bddf0bc126cdb1ab8e04098d053be"
             ]
         }
     },
