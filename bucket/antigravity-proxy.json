@@ -1,5 +1,5 @@
 {
-    "version": "2.6.3",
+    "version": "2.6.4",
     "description": "Transparent proxy injector for Antigravity, forcing SOCKS5/HTTP proxy without TUN mode on Windows.",
     "homepage": "https://github.com/yuaotian/antigravity-proxy",
     "license": {
@@ -22,22 +22,22 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.3/antigravity-proxy-v2.6.3-ide-win-x64.zip",
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.3/antigravity-proxy-v2.6.3-cli-win-x64.zip"
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-ide-win-x64.zip",
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-cli-win-x64.zip"
             ],
             "hash": [
-                "921786c4abb49f81059cba92e5682adedcff2c975128158628695f344e137c45",
-                "4e01fb0181ff2bcebeee8f1482aa5b55b97ed33bb7d013e692ffa26d94c7aa85"
+                "ccae9cc0f3c0df6767ed389f3d6d1b8a79d6b7c255df6f156b90c8545f718bcb",
+                "12f97e579e80713f7f8387448463971285d4e8f12bb3c544f1b1bd77d5057c4a"
             ]
         },
         "32bit": {
             "url": [
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.3/antigravity-proxy-v2.6.3-ide-win-x86.zip",
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.3/antigravity-proxy-v2.6.3-cli-win-x86.zip"
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-ide-win-x86.zip",
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-cli-win-x86.zip"
             ],
             "hash": [
-                "b3533ae81d6f6d35c998c4d1451577dcd515e378fa7848d7ab2f4b1e46f60c82",
-                "6fd52157f80834d41d1a2782ccc9a8b747e1c004eeacc811ccf3b32c67f76d30"
+                "cd8ae001f5c3f1438ef4345f0d3c63f79c8b6c873c4a53cb801d891c07bf9983",
+                "01cb0f7a9fb8652dc522b8e33caa1148eea7bd9e69c9ccece39dda2c0d5291f7"
             ]
         }
     },
