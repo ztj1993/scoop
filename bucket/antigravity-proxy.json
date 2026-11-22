@@ -1,5 +1,5 @@
 {
-    "version": "2.6.4",
+    "version": "2.6.6",
     "description": "Transparent proxy injector for Antigravity, forcing SOCKS5/HTTP proxy without TUN mode on Windows.",
     "homepage": "https://github.com/yuaotian/antigravity-proxy",
     "license": {
@@ -22,22 +22,22 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-ide-win-x64.zip",
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-cli-win-x64.zip"
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.6/antigravity-proxy-v2.6.6-ide-win-x64.zip",
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.6/antigravity-proxy-v2.6.6-cli-win-x64.zip"
             ],
             "hash": [
-                "ccae9cc0f3c0df6767ed389f3d6d1b8a79d6b7c255df6f156b90c8545f718bcb",
-                "12f97e579e80713f7f8387448463971285d4e8f12bb3c544f1b1bd77d5057c4a"
+                "479feaeafc0e7ca7dfd9d1932c0f3610d1ea2b3e9cbcd7a9066f109039e4cf84",
+                "7cb285babde2eecd8e4b66ac69f4f119d3d356e7c0d0b061b4120888dbfcf65d"
             ]
         },
         "32bit": {
             "url": [
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-ide-win-x86.zip",
-                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.4/antigravity-proxy-v2.6.4-cli-win-x86.zip"
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.6/antigravity-proxy-v2.6.6-ide-win-x86.zip",
+                "https://github.com/yuaotian/antigravity-proxy/releases/download/v2.6.6/antigravity-proxy-v2.6.6-cli-win-x86.zip"
             ],
             "hash": [
-                "cd8ae001f5c3f1438ef4345f0d3c63f79c8b6c873c4a53cb801d891c07bf9983",
-                "01cb0f7a9fb8652dc522b8e33caa1148eea7bd9e69c9ccece39dda2c0d5291f7"
+                "a274cb723f36f8c3fa736736f435b76d7784f3cdffef33075e38d105cd984eca",
+                "211a0887e023e59236ae676e2a7fd8ab3434571150da17e9141d2fc77225e975"
             ]
         }
     },
